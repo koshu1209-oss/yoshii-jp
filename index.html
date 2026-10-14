@@ -100,9 +100,16 @@ p { margin: 0; }
   98.08% { opacity: 0; transform: scale(1); }
   100% { opacity: 1; transform: scale(1); }
 }
+@keyframes heroFade {
+  0% { opacity: 1; }
+  7.69% { opacity: 1; }
+  9.62% { opacity: 0; }
+  98.08% { opacity: 0; }
+  100% { opacity: 1; }
+}
+/* 「視差効果を減らす」設定の端末では、ズームなしで切り替えだけ行う */
 @media (prefers-reduced-motion: reduce) {
-  .hero-slides .slide { animation: none; }
-  .hero-slides .slide:first-child { opacity: 1; }
+  .hero-slides .slide { animation-name: heroFade; }
 }
 @media (max-width: 760px) { .hero-slides::after { background: rgba(14,13,13,.68); } }
 .hero-lines { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .14; pointer-events: none; }
