@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>吉井JP ジュニアパルス</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="吉井JP（ジュニアパルス）は幼児・小学生を対象にしたサッカー少年団です。部員募集中・体験随時受付。">
+<link rel="icon" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+/* Layout: ピッチのラインをモチーフにした1ページ構成。各セクションは横幅いっぱいの帯、中身は中央の列。 */
+:root {
+  --pitch: #d7232b;        /* チームカラーの赤 */
+  --pitch-deep: #161515;   /* チームカラーの黒（ヘッダー・トップ・募集） */
+  --ink: #1d1a1a;          /* 文字色 */
+  --sun: #ffd21f;          /* ユニフォームの黄色（ボタン・帯） */
+  --hi: #ffd21f;           /* 黒地の上の強調文字 */
+  --paper: #f7f5f4;        /* 背景 */
+  --card: #ffffff;
+  --muted: #6a6260;
+  --line: #e4dedc;
+  --on-pitch: #ffffff;
+  --font-display: "Dela Gothic One", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pitch: #e2353c; --pitch-deep: #0b0a0a; --ink: #f1eeed; --sun: #ffd21f; --hi: #ffd21f;
+    --paper: #131111; --card: #1d1a1a; --muted: #aaa19f; --line: #322d2c; --on-pitch: #ffffff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --pitch: #e2353c; --pitch-deep: #0b0a0a; --ink: #f1eeed; --sun: #ffd21f; --hi: #ffd21f;
+  --paper: #131111; --card: #1d1a1a; --muted: #aaa19f; --line: #322d2c; --on-pitch: #ffffff;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-weight: 500; font-size: 16px; line-height: 1.8;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; line-height: 1.3; }
+p { margin: 0; }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+
+/* ヘッダー */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: var(--pitch-deep); color: var(--on-pitch);
+}
+.site-header .wrap { display: flex; align-items: center; gap: 16px; padding-block: 10px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-size: 1.15rem; letter-spacing: .02em; }
+.brand-mark { width: 36px; height: 36px; flex: none; }
+.nav { margin-left: auto; overflow-x: auto; min-width: 0; max-width: 100%; }
+.nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; white-space: nowrap; }
+.nav a { display: block; padding: 6px 10px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: .9rem; }
+.nav a:hover { background: rgba(255,255,255,.14); }
+.nav a.cta { background: var(--sun); color: #161515; }
+
+/* ヒーロー：ピッチ */
+.hero { background: var(--pitch-deep); color: var(--on-pitch); position: relative; overflow: hidden; border-bottom: 10px solid var(--sun); box-shadow: inset 0 -16px 0 var(--pitch); }
+.hero::before { /* 芝の刈り目 */
+  content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 64px, transparent 64px 128px);
+}
+.hero-lines { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .14; pointer-events: none; }
+.hero .wrap { position: relative; padding-block: 56px 64px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
+.hero-copy { display: grid; gap: 20px; min-width: 0; }
+.hero-logo { width: clamp(150px, 26vw, 260px); height: auto; filter: drop-shadow(0 8px 24px rgba(0,0,0,.45)); }
+.hero-eyebrow { font-weight: 900; letter-spacing: .12em; font-size: .85rem; }
+.hero h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2.4rem, 8vw, 4.6rem); line-height: 1.1; }
+.hero h1 small { display: block; font-size: .42em; letter-spacing: .08em; margin-top: 8px; color: var(--hi); }
+.hero-lead { max-width: 34em; font-size: 1.05rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 4px; }
+.btn { display: inline-block; padding: 12px 22px; border-radius: 999px; font-weight: 900; text-decoration: none; }
+.btn-sun { background: var(--sun); color: #161515; }
+.btn-ghost { border: 2px solid rgba(255,255,255,.8); color: var(--on-pitch); }
+
+/* セクション共通 */
+section { scroll-margin-top: 72px; }
+.band { padding-block: 64px; }
+.band + .band { border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 6px; margin-bottom: 32px; }
+.sec-head .en { font-family: var(--font-display); color: var(--pitch); font-size: .9rem; letter-spacing: .14em; }
+.sec-head h2 { font-size: clamp(1.6rem, 4.5vw, 2.2rem); font-weight: 900; }
+.sec-head p { color: var(--muted); max-width: 40em; }
+
+.ph-photo { /* 写真の仮置き枠 */
+  background: repeating-linear-gradient(135deg, var(--line) 0 10px, transparent 10px 20px), var(--card);
+  border: 2px dashed var(--line); border-radius: 14px; color: var(--muted);
+  display: grid; place-items: center; text-align: center; font-size: .85rem; font-weight: 700;
+  aspect-ratio: 4 / 3; max-width: 100%;
+}
+
+.photo { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; max-width: 100%; }
+figure { margin: 0; display: grid; gap: 8px; }
+figcaption { font-size: .85rem; color: var(--muted); }
+
+/* チーム紹介 */
+.about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start; }
+.about-grid > * { min-width: 0; }
+.about-text { display: grid; gap: 16px; }
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 8px; }
+.facts div { background: var(--card); padding: 14px 16px; }
+.facts dt { font-size: .78rem; color: var(--muted); font-weight: 700; letter-spacing: .06em; }
+.facts dd { margin: 0; font-weight: 900; font-size: 1.05rem; }
+.motto { background: var(--pitch); color: var(--on-pitch); border-radius: 14px; padding: 20px 22px; display: grid; gap: 8px; }
+.motto strong { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; }
+
+/* 選手紹介 */
+.grade-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.grade-tabs button {
+  font: inherit; font-weight: 900; cursor: pointer; padding: 8px 16px; border-radius: 999px;
+  border: 2px solid var(--pitch); background: transparent; color: var(--ink);
+}
+.grade-tabs button[aria-selected="true"] { background: var(--pitch); color: var(--on-pitch); }
+.grade-photos { max-width: 820px; }
+.players { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.player { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 4px; justify-items: start; }
+.shirt { width: 54px; height: 54px; margin-bottom: 6px; }
+.shirt path { fill: var(--pitch); }
+.shirt text { fill: #fff; font-family: var(--font-display); font-size: 17px; }
+.player .name { font-weight: 900; font-size: 1.05rem; }
+.player .meta { font-size: .82rem; color: var(--muted); }
+.note { font-size: .85rem; color: var(--muted); margin-top: 16px; }
+
+/* 指導者紹介 */
+.coaches { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.coach { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; grid-template-columns: 88px 1fr; gap: 16px; align-items: start; }
+.coach > * { min-width: 0; }
+.coach .ph-photo { aspect-ratio: 1; border-radius: 50%; font-size: .72rem; }
+.coach .role { font-size: .8rem; font-weight: 900; color: var(--pitch); letter-spacing: .06em; }
+.coach h3 { font-size: 1.15rem; }
+.coach .lic { display: inline-block; font-size: .75rem; font-weight: 700; border: 1px solid var(--line); border-radius: 6px; padding: 0 8px; margin-block: 4px 8px; color: var(--muted); }
+.coach p { font-size: .92rem; }
+.staff { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 18px; align-items: start; }
+.coach-names { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5em, 1fr)); gap: 8px; }
+.coach-names li { font-weight: 700; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+
+/* スケジュール */
+.sched-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.sched-grid > * { min-width: 0; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+.panel h3 { font-size: 1.1rem; margin-bottom: 12px; }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .8rem; color: var(--muted); font-weight: 700; white-space: nowrap; }
+td.day { font-weight: 900; white-space: nowrap; }
+.events { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.events li { display: grid; grid-template-columns: 76px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.events time { font-weight: 900; font-variant-numeric: tabular-nums; }
+.tag { display: inline-block; font-size: .72rem; font-weight: 900; padding: 1px 8px; border-radius: 6px; margin-right: 6px; background: var(--ink); color: var(--paper); }
+.tag.game { background: var(--pitch); color: #fff; }
+
+/* 日々の活動 */
+.diary { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.post { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+.post .ph-photo { border-radius: 0; border: 0; border-bottom: 1px solid var(--line); }
+.post-body { padding: 16px; display: grid; gap: 6px; align-content: start; }
+.post time { font-size: .8rem; color: var(--muted); font-weight: 700; font-variant-numeric: tabular-nums; }
+.post h3 { font-size: 1.05rem; }
+.post p { font-size: .92rem; }
+
+.ig-panel { background: var(--pitch-deep); color: #fff; border-radius: 14px; padding: 24px; display: flex; flex-wrap: wrap; gap: 16px 24px; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.ig-panel > div { display: grid; gap: 4px; min-width: 0; }
+.ig-panel h3 { font-size: 1.15rem; }
+.post .photo { border-radius: 0; }
+
+/* 部員募集 */
+.join { background: var(--pitch-deep); color: var(--on-pitch); }
+.join .sec-head .en { color: var(--hi); }
+.join .sec-head p { color: rgba(255,255,255,.82); }
+.join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.join-grid > * { min-width: 0; }
+.join dl { margin: 0; display: grid; gap: 0; }
+.join dl div { display: grid; grid-template-columns: 7em 1fr; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+.join dt { font-weight: 900; color: var(--hi); }
+.join dd { margin: 0; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: s; }
+.steps li { counter-increment: s; background: rgba(255,255,255,.08); border-radius: 14px; padding: 14px 16px 14px 60px; position: relative; }
+.steps li::before { content: counter(s); position: absolute; left: 16px; top: 14px; width: 30px; height: 30px; border-radius: 50%; background: var(--sun); color: #161515; font-family: var(--font-display); display: grid; place-items: center; }
+.steps strong { display: block; }
+.contact { margin-top: 20px; background: var(--paper); color: var(--ink); border-radius: 14px; padding: 18px 20px; display: grid; gap: 4px; }
+.contact .big { font-family: var(--font-display); font-size: 1.3rem; word-break: break-all; }
+
+/* フッター */
+.site-footer { background: var(--pitch-deep); color: #fff; }
+.site-footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; font-size: .85rem; }
+.foot-brand { display: inline-flex; align-items: center; gap: 10px; }
+.foot-brand img { width: 28px; height: 28px; }
+
+@media (max-width: 760px) {
+  .about-grid, .sched-grid, .join-grid, .staff { grid-template-columns: 1fr; }
+  .nav { margin-left: 0; width: 100%; }
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 36px 48px; }
+  .hero-logo { order: -1; width: 128px; }
+  .band { padding-block: 48px; }
+  .join dl div { grid-template-columns: 1fr; gap: 2px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="吉井JP トップへ">
+      <img class="brand-mark" src="images/logo.png" alt="" width="36" height="36">
+      吉井JP
+    </a>
+    <nav class="nav" aria-label="ページ内メニュー">
+      <ul>
+        <li><a href="#about">チーム紹介</a></li>
+        <li><a href="#players">選手</a></li>
+        <li><a href="#coaches">指導者</a></li>
+        <li><a href="#schedule">スケジュール</a></li>
+        <li><a href="#diary">活動日記</a></li>
+        <li><a class="cta" href="#join">部員募集</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== トップ ===== -->
+<div class="hero">
+  <svg class="hero-lines" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#fff" stroke-width="3">
+      <rect x="20" y="20" width="960" height="360"/>
+      <line x1="500" y1="20" x2="500" y2="380"/>
+      <circle cx="500" cy="200" r="70"/>
+      <rect x="20" y="110" width="110" height="180"/>
+      <rect x="870" y="110" width="110" height="180"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="hero-copy">
+    <p class="hero-eyebrow">幼児・小学生のサッカー少年団</p>
+    <h1>吉井JP<small>JUNIOR PULSE ジュニアパルス</small></h1>
+    <p class="hero-lead">群馬県高崎市吉井町で1991年から活動している、少年少女のサッカーチームです。サッカーがはじめての子も大歓迎。保護者会やお茶当番はありません。体験はいつでもできます。</p>
+    <div class="hero-actions">
+      <a class="btn btn-sun" href="#join">無料体験を申し込む</a>
+      <a class="btn btn-ghost" href="#schedule">練習日を見る</a>
+    </div>
+    </div>
+    <img class="hero-logo" src="images/logo.png" alt="吉井JPのチームエンブレム" width="260" height="260">
+  </div>
+</div>
+
+<!-- ===== チーム紹介 ===== -->
+<section id="about" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">ABOUT</span>
+      <h2>チーム紹介</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>高崎市吉井町を中心に活動している、少年少女のサッカーチームです。「サッカーを通じて人を育てる」ことを目的とし、技術と心を磨いています。</p>
+        <p>「パルス（PULSE）」は、英語で「鼓動」「脈拍」「衝動」といった意味を持ち、子どもたちの生き生きとした心臓の鼓動や、サッカーに対する情熱・胸の高鳴りを表して名付けられた一般的なスポーツチームの名称の由来に共通しています。</p>
+        <dl class="facts">
+          <div><dt>設立</dt><dd>1991年</dd></div>
+          <div><dt>活動地域</dt><dd>群馬県高崎市吉井町</dd></div>
+          <div><dt>対象</dt><dd>幼児・小学生（男女）</dd></div>
+          <div><dt>主な練習場所</dt><dd>吉井西小学校</dd></div>
+        </dl>
+        <div class="motto">
+          <span>指導方針</span>
+          <strong>サッカーを通じて人を育てる</strong>
+        </div>
+      </div>
+      <figure>
+        <img class="photo" src="images/team.jpg" alt="黄色いユニフォームを着た吉井JPの選手たちの集合写真" width="1600" height="1200">
+        <figcaption>吉井JPの選手たち</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 選手紹介 ===== -->
+<section id="players" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">PLAYERS</span>
+      <h2>選手紹介</h2>
+      <p>学年ごとの集合写真です。タブを切りかえて見てください。</p>
+    </div>
+    <div class="grade-tabs" role="tablist" aria-label="学年">
+      <button id="tab-grade6" role="tab" aria-selected="true" data-grade="grade6">6年生</button>
+      <button id="tab-grade5" role="tab" aria-selected="false" data-grade="grade5">5年生</button>
+      <button id="tab-grade4" role="tab" aria-selected="false" data-grade="grade4">4年生</button>
+      <button id="tab-grade3" role="tab" aria-selected="false" data-grade="grade3">3年生</button>
+      <button id="tab-grade2" role="tab" aria-selected="false" data-grade="grade2">2年生</button>
+    </div>
+    <!-- 学年を増やすときは、ボタンと figure を同じ data-grade で1組ずつ追加します -->
+    <div class="grade-photos" id="player-list">
+      <figure class="grade-photo" data-grade="grade6">
+        <img class="photo" src="images/grade6.jpg" alt="6年生の集合写真" width="1600" height="1200" loading="lazy">
+        <figcaption>6年生</figcaption>
+      </figure>
+      <figure class="grade-photo" data-grade="grade5">
+        <img class="photo" src="images/grade5.jpg" alt="5年生の集合写真" width="1600" height="1200" loading="lazy">
+        <figcaption>5年生</figcaption>
+      </figure>
+      <figure class="grade-photo" data-grade="grade4">
+        <img class="photo" src="images/grade4.jpg" alt="4年生の集合写真" width="1600" height="1200" loading="lazy">
+        <figcaption>4年生</figcaption>
+      </figure>
+      <figure class="grade-photo" data-grade="grade3">
+        <img class="photo" src="images/grade3.jpg" alt="3年生の集合写真" width="1600" height="1200" loading="lazy">
+        <figcaption>3年生</figcaption>
+      </figure>
+      <figure class="grade-photo" data-grade="grade2">
+        <img class="photo" src="images/grade2.jpg" alt="2年生の集合写真" width="1600" height="1200" loading="lazy">
+        <figcaption>2年生</figcaption>
+      </figure>
+    </div>
+    <p class="note">※選手の名前や写真は、保護者の方の了承を得たものだけを掲載しています。</p>
+  </div>
+</section>
+
+<!-- ===== 指導者紹介 ===== -->
+<section id="coaches" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">COACHES</span>
+      <h2>指導者紹介</h2>
+      <p>子どもたちが安全に、楽しくサッカーできるよう指導しています。</p>
+    </div>
+    <div class="staff">
+      <article class="coach head">
+        <!-- ▼差し替え：監督の写真 例）<img src="images/coach-yokoo.jpg" alt="横尾千明 監督"> -->
+        <div class="ph-photo">写真</div>
+        <div>
+          <span class="role">監督</span>
+          <h3>横尾 千明</h3>
+          <p>「サッカーを通じて人を育てる」を大切に、子どもたちの技術と心を育てています。</p>
+        </div>
+      </article>
+      <div class="panel">
+        <h3>コーチ</h3>
+        <!-- コーチを増やすときは <li>名前</li> を追加 -->
+        <ul class="coach-names">
+          <li>吉井 和弘</li>
+          <li>野中 幸雄</li>
+          <li>新井 智則</li>
+          <li>浦野 公昭</li>
+          <li>高橋 佑弥</li>
+          <li>竹林 孝</li>
+          <li>池野 拓哉</li>
+          <li>白石 亮太</li>
+          <li>河地 瑶</li>
+          <li>大塚 翔也</li>
+          <li>志村 駿介</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== スケジュール ===== -->
+<section id="schedule" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">SCHEDULE</span>
+      <h2>スケジュール</h2>
+      <p>天候などで変更になる場合があります。最新情報は連絡網でお知らせします。</p>
+    </div>
+    <div class="sched-grid">
+      <div class="panel">
+        <h3>ふだんの練習</h3>
+        <!-- ▼差し替え：練習日・時間・場所 -->
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>曜日</th><th>時間</th><th>カテゴリー・場所</th></tr></thead>
+            <tbody>
+              <tr><td class="day">火曜日</td><td>18:45〜20:45</td><td>ナイター練習（全学年）<br>吉井西小学校</td></tr>
+              <tr><td class="day">金曜日</td><td>18:45〜20:45</td><td>ナイター練習（全学年）<br>吉井西小学校</td></tr>
+              <tr><td class="day">土・日曜日</td><td>9:00〜12:00</td><td>主に試合<br>吉井総合運動公園・吉井西グランドほか各会場</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>試合・行事の予定</h3>
+        <!-- 予定を載せるときは <ul class="events"><li><time>10/19(日)</time><span><span class="tag game">試合</span>大会名（会場）</span></li></ul> の形で追加 -->
+        <p>土日の試合や団行事の予定は、Instagramとチームの連絡網でお知らせしています。</p>
+        <p style="margin-top:12px"><a href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagram @yoshii.jp</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 日々の活動 ===== -->
+<section id="diary" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">DIARY</span>
+      <h2>日々の活動</h2>
+      <p>練習や試合のようすをお届けします。</p>
+    </div>
+    <div class="ig-panel">
+      <div>
+        <h3>最新の活動はInstagramで更新中</h3>
+        <p>練習や試合、団行事のようすを写真で発信しています。</p>
+      </div>
+      <a class="btn btn-sun" href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">@yoshii.jp を見る</a>
+    </div>
+    <!-- 記事を載せるときは、下の .diary の中に <article class="post"> を新しい順に追加します。
+    <div class="diary">
+      <article class="post">
+        <img class="photo" src="images/diary-1.jpg" alt="写真の説明">
+        <div class="post-body">
+          <time datetime="2026-10-11">2026.10.11</time>
+          <h3>見出し</h3>
+          <p>本文</p>
+        </div>
+      </article>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ===== 部員募集 ===== -->
+<section id="join" class="band join">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="en">JOIN US</span>
+      <h2>部員募集</h2>
+      <p>サッカーがはじめての子も大歓迎。まずは体験に来てみてください。</p>
+    </div>
+    <div class="join-grid">
+      <!-- ▼差し替え：募集要項 -->
+      <dl>
+        <div><dt>対象</dt><dd>年中〜小学6年生（男女問わず）</dd></div>
+        <div><dt>体験</dt><dd>随時受付。メールまたはInstagramでお気軽にご連絡ください</dd></div>
+        <div><dt>月謝</dt><dd>1〜3年生 1,500円／4〜6年生 2,000円</dd></div>
+        <div><dt>入会時</dt><dd>スポーツ保険・ユニフォーム代などの費用は、体験のときにご説明します</dd></div>
+        <div><dt>持ち物</dt><dd>動きやすい服装、運動靴、水筒、タオル（ボール・すね当ては体験中は貸し出しあり）</dd></div>
+        <div><dt>保護者の方へ</dt><dd>保護者会やお茶当番などの負担は一切ありません。親御さんの負担なく活動に参加できます。</dd></div>
+      </dl>
+      <div>
+        <ol class="steps">
+          <li><strong>連絡する</strong>メールまたはInstagramで、お子さんの名前・学年・体験希望日をお知らせください。</li>
+          <li><strong>体験に参加</strong>ふだんの練習に一緒に参加します。保護者の方の見学もどうぞ。</li>
+          <li><strong>入会手続き</strong>入会申込書を提出して、いよいよチームの一員です。</li>
+        </ol>
+        <div class="contact">
+          <span>お問い合わせ（メール）</span>
+          <span class="big">yoshiijp.soccer@gmail.com</span>
+          <span>Instagram：<a href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">@yoshii.jp</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="foot-brand"><img src="images/logo.png" alt="" width="28" height="28">吉井JP（ジュニアパルス）｜群馬県高崎市吉井町｜<a href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagram</a></span>
+    <span>© 2026 Yoshii Junior Pulse</span>
+  </div>
+</footer>
+
+<script>
+// 選手紹介のタブ切りかえ
+(function () {
+  var tabs = document.querySelectorAll('.grade-tabs button');
+  var players = document.querySelectorAll('#player-list .grade-photo');
+  function show(grade) {
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.grade === grade ? 'true' : 'false'); });
+    players.forEach(function (p) { p.hidden = p.dataset.grade !== grade; });
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.grade); }); });
+  show('grade6');
+})();
+</script>
+</body>
+</html>
