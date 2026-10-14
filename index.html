@@ -78,19 +78,26 @@ p { margin: 0; }
   background: repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 64px, transparent 64px 128px);
 }
 .hero-slides { position: absolute; inset: 0; }
-.hero-slides .slide { position: absolute; inset: 0; background-size: cover; background-position: center 35%; opacity: 0; animation: heroSlide 36s linear infinite; }
+.hero-slides .slide { position: absolute; inset: 0; background-size: cover; background-position: center 35%; opacity: 0; animation: heroSlide 26s linear infinite; }
 .hero-slides .slide:nth-child(1) { animation-delay: 0s; }
-.hero-slides .slide:nth-child(2) { animation-delay: -30s; }
-.hero-slides .slide:nth-child(3) { animation-delay: -24s; }
-.hero-slides .slide:nth-child(4) { animation-delay: -18s; }
-.hero-slides .slide:nth-child(5) { animation-delay: -12s; }
-.hero-slides .slide:nth-child(6) { animation-delay: -6s; }
+.hero-slides .slide:nth-child(2) { animation-delay: -24s; }
+.hero-slides .slide:nth-child(3) { animation-delay: -22s; }
+.hero-slides .slide:nth-child(4) { animation-delay: -20s; }
+.hero-slides .slide:nth-child(5) { animation-delay: -18s; }
+.hero-slides .slide:nth-child(6) { animation-delay: -16s; }
+.hero-slides .slide:nth-child(7) { animation-delay: -14s; }
+.hero-slides .slide:nth-child(8) { animation-delay: -12s; }
+.hero-slides .slide:nth-child(9) { animation-delay: -10s; }
+.hero-slides .slide:nth-child(10) { animation-delay: -8s; }
+.hero-slides .slide:nth-child(11) { animation-delay: -6s; }
+.hero-slides .slide:nth-child(12) { animation-delay: -4s; }
+.hero-slides .slide:nth-child(13) { animation-delay: -2s; }
 .hero-slides::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,13,13,.86) 0%, rgba(14,13,13,.62) 55%, rgba(14,13,13,.35) 100%); }
 @keyframes heroSlide {
   0% { opacity: 1; transform: scale(1); }
-  16.67% { opacity: 1; }
-  20% { opacity: 0; transform: scale(1.08); }
-  96.67% { opacity: 0; transform: scale(1); }
+  7.69% { opacity: 1; }
+  9.62% { opacity: 0; transform: scale(1.04); }
+  98.08% { opacity: 0; transform: scale(1); }
   100% { opacity: 1; transform: scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -273,14 +280,21 @@ td.day { font-weight: 900; white-space: nowrap; }
 
 <!-- ===== トップ ===== -->
 <div class="hero">
-  <!-- トップのスライドショー：写真を変えるときは images/ の画像名を書き換え（6枚・各6秒） -->
+  <!-- トップのスライドショー：写真を変えるときは images/ の画像名を書き換え（13枚・各2秒）。枚数を変えたらCSSの .hero-slides も合わせて調整 -->
   <div class="hero-slides" aria-hidden="true">
     <div class="slide" style="background-image:url(images/team.jpg)"></div>
+    <div class="slide" style="background-image:url(images/activity1.jpg)"></div>
+    <div class="slide" style="background-image:url(images/activity2.jpg)"></div>
     <div class="slide" style="background-image:url(images/grade6.jpg)"></div>
+    <div class="slide" style="background-image:url(images/activity3.jpg)"></div>
     <div class="slide" style="background-image:url(images/grade5.jpg)"></div>
+    <div class="slide" style="background-image:url(images/activity4.jpg)"></div>
     <div class="slide" style="background-image:url(images/grade4.jpg)"></div>
+    <div class="slide" style="background-image:url(images/activity5.jpg)"></div>
     <div class="slide" style="background-image:url(images/grade3.jpg)"></div>
+    <div class="slide" style="background-image:url(images/activity6.jpg)"></div>
     <div class="slide" style="background-image:url(images/grade2.jpg)"></div>
+    <div class="slide" style="background-image:url(images/activity7.jpg)"></div>
   </div>
   <svg class="hero-lines" viewBox="0 0 1000 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <g fill="none" stroke="#fff" stroke-width="3">
