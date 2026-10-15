@@ -251,7 +251,7 @@ td.day { font-weight: 900; white-space: nowrap; }
 .steps li::before { content: counter(s); position: absolute; left: 16px; top: 14px; width: 30px; height: 30px; border-radius: 50%; background: var(--sun); color: #161515; font-family: var(--font-display); display: grid; place-items: center; }
 .steps strong { display: block; }
 .contact { margin-top: 20px; background: var(--paper); color: var(--ink); border-radius: 14px; padding: 18px 20px; display: grid; gap: 4px; }
-.contact .big { font-family: var(--font-display); font-size: 1.3rem; word-break: break-all; }
+.contact .big { font-family: var(--font-display); font-size: clamp(.85rem, 4.1vw, 1.3rem); white-space: nowrap; overflow-wrap: normal; }
 
 /* フッター */
 .site-footer { background: var(--pitch-deep); color: #fff; }
