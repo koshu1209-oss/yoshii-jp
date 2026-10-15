@@ -254,7 +254,8 @@ td.day { font-weight: 900; white-space: nowrap; }
 .contact .big { font-family: var(--font-display); font-size: clamp(.85rem, 4.1vw, 1.3rem); white-space: nowrap; overflow-wrap: normal; }
 
 .ig-hint { margin-top: 10px; font-size: .88rem; }
-.ig-btn { justify-self: start; margin-top: 6px; display: inline-block; padding: 10px 18px; border-radius: 999px; background: var(--pitch-deep); color: #fff; font-weight: 900; text-decoration: none; }
+.next-ig { grid-column: 1 / -1; }
+.ig-btn { justify-self: start; border: 1px solid var(--line); margin-top: 6px; display: inline-block; padding: 10px 18px; border-radius: 999px; background: var(--pitch-deep); color: #fff; font-weight: 900; text-decoration: none; }
 .ig-btn:hover { background: var(--pitch); }
 
 /* フッター */
@@ -356,7 +357,8 @@ td.day { font-weight: 900; white-space: nowrap; }
         <strong id="next-title">ナイター練習</strong>
         <span id="next-detail">18:45〜20:45　吉井西小学校</span>
       </div>
-      <span class="next-note">雨天中止などの連絡はInstagramでお知らせします</span>
+      <span class="next-note">雨天中止などの連絡はInstagramでお知らせします。下のボタンをタップすると、チームのアカウントがすぐに開きます。</span>
+      <span class="next-ig"><a class="ig-btn" href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagram @yoshii.jp を開く →</a></span>
     </div>
   </div>
 </section>
@@ -499,7 +501,8 @@ td.day { font-weight: 900; white-space: nowrap; }
         <h3>試合・行事の予定</h3>
         <!-- 予定を載せるときは <ul class="events"><li><time>10/19(日)</time><span><span class="tag game">試合</span>大会名（会場）</span></li></ul> の形で追加 -->
         <p>土日の試合や団行事の予定は、Instagramとチームの連絡網でお知らせしています。</p>
-        <p style="margin-top:12px"><a href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagram @yoshii.jp</a></p>
+        <p class="ig-hint">下のボタンをタップすると、チームのアカウントがすぐに開きます。</p>
+        <a class="ig-btn" href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagram @yoshii.jp を開く →</a>
       </div>
     </div>
   </div>
@@ -516,9 +519,9 @@ td.day { font-weight: 900; white-space: nowrap; }
     <div class="ig-panel">
       <div>
         <h3>最新の活動はInstagramで更新中</h3>
-        <p>練習や試合、団行事のようすを写真で発信しています。</p>
+        <p>練習や試合、団行事のようすを写真で発信しています。下のボタンをタップすると、チームのアカウントがすぐに開きます。</p>
       </div>
-      <a class="btn btn-sun" href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">@yoshii.jp を見る</a>
+      <a class="btn btn-sun" href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagram @yoshii.jp を開く →</a>
     </div>
     <!-- 記事を載せるときは、下の .diary の中に <article class="post"> を新しい順に追加します。
     <div class="diary">
@@ -574,7 +577,7 @@ td.day { font-weight: 900; white-space: nowrap; }
 
 <footer class="site-footer">
   <div class="wrap">
-    <span class="foot-brand"><img src="images/logo.png" alt="" width="28" height="28">吉井JP（ジュニアパルス）｜群馬県高崎市吉井町｜<a href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagram</a></span>
+    <span class="foot-brand"><img src="images/logo.png" alt="" width="28" height="28">吉井JP（ジュニアパルス）｜群馬県高崎市吉井町｜<a href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagramを開く →</a></span>
     <span>© 2026 Yoshii Junior Pulse</span>
   </div>
 </footer>
