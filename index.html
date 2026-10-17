@@ -292,9 +292,16 @@ td.day { font-weight: 900; white-space: nowrap; }
 
 /* フッター */
 .site-footer { background: var(--pitch-deep); color: #fff; }
-.site-footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; font-size: .85rem; }
-.foot-brand { display: inline-flex; align-items: center; gap: 10px; }
-.foot-brand img { width: 28px; height: 28px; }
+.site-footer .wrap { padding-block: 32px; display: grid; gap: 16px; justify-items: center; text-align: center; font-size: .88rem; }
+.foot-brand { display: flex; align-items: center; gap: 12px; }
+.foot-brand img { width: 40px; height: 40px; }
+.foot-name { display: grid; text-align: left; line-height: 1.3; }
+.foot-name strong { font-family: var(--font-display); font-weight: 400; font-size: 1.15rem; }
+.foot-name span { font-size: .8rem; opacity: .8; }
+.foot-info { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.foot-info li { white-space: nowrap; }
+.foot-info a { color: var(--sun); font-weight: 700; }
+.foot-copy { opacity: .6; font-size: .75rem; }
 
 @media (max-width: 760px) {
   .about-grid, .sched-grid, .join-grid, .staff { grid-template-columns: 1fr; }
@@ -688,8 +695,19 @@ td.day { font-weight: 900; white-space: nowrap; }
 
 <footer class="site-footer">
   <div class="wrap">
-    <span class="foot-brand"><img src="images/logo.png" alt="" width="28" height="28">吉井JP（ジュニアパルス）｜群馬県高崎市吉井町｜<a href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagramを開く →</a></span>
-    <span>© 2026 Yoshii Junior Pulse</span>
+    <div class="foot-brand">
+      <img src="images/logo.png" alt="" width="40" height="40">
+      <div class="foot-name">
+        <strong>吉井JP</strong>
+        <span>ジュニアパルス</span>
+      </div>
+    </div>
+    <ul class="foot-info">
+      <li>群馬県高崎市吉井町</li>
+      <li>yoshiijp.soccer@gmail.com</li>
+      <li><a href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagramを開く →</a></li>
+    </ul>
+    <small class="foot-copy">© 2026 Yoshii Junior Pulse</small>
   </div>
 </footer>
 
