@@ -226,7 +226,7 @@ figcaption { font-size: .85rem; color: var(--muted); }
 .face img { width: 100%; height: 100%; object-fit: cover; }
 .face img.ph { object-fit: contain; padding: 14%; opacity: .35; }
 .face-lg { width: 88px; }
-@media (min-width: 900px) { .coach-faces { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 900px) { .coach-faces { grid-template-columns: repeat(5, minmax(0, 1fr)); } .coach-faces .face { width: 100px; } .face-lg { width: 110px; } .coach { grid-template-columns: 110px 1fr; } }
 @media (max-width: 480px) { .coach-faces { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 4px; } .coach-faces li { font-size: .8rem; } .coach-faces .face { width: 64px; } }
 
 /* スケジュール */
@@ -503,8 +503,7 @@ td.day { font-weight: 900; white-space: nowrap; }
         </div>
       </article>
       <article class="coach head">
-        <!-- ▼差し替え：監督の写真 例）<img src="images/coach-yokoo.jpg" alt="横尾千明 監督"> -->
-        <span class="face face-lg"><img src="images/logo.png" alt="" class="ph"></span>
+        <span class="face face-lg"><img src="images/coach-yokoo.jpg" alt="横尾 千明 監督（吉井JP）" width="400" height="400"></span>
         <div>
           <span class="role">監督</span>
           <h3>横尾 千明</h3>
@@ -517,14 +516,14 @@ td.day { font-weight: 900; white-space: nowrap; }
         <!-- 写真を入れるときは images/logo.png と class="ph" を、写真ファイルと alt="名前 コーチ" に差し替え -->
         <ul class="coach-faces">
           <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>野中 幸雄</li>
-          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>新井 智則</li>
-          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>浦野 公昭</li>
-          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>高橋 佑弥</li>
-          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>竹林 孝</li>
-          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>池野 拓哉</li>
-          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>白石 亮太</li>
+          <li><span class="face"><img src="images/coach-arai.jpg" alt="新井 智則 コーチ（吉井JP）" loading="lazy" width="400" height="400"></span>新井 智則</li>
+          <li><span class="face"><img src="images/coach-urano.jpg" alt="浦野 公昭 コーチ（吉井JP）" loading="lazy" width="400" height="400"></span>浦野 公昭</li>
+          <li><span class="face"><img src="images/coach-takahashi.jpg" alt="高橋 佑弥 コーチ（吉井JP）" loading="lazy" width="400" height="400"></span>高橋 佑弥</li>
+          <li><span class="face"><img src="images/coach-takebayashi.jpg" alt="竹林 孝 コーチ（吉井JP）" loading="lazy" width="400" height="400"></span>竹林 孝</li>
+          <li><span class="face"><img src="images/coach-ikeno.jpg" alt="池野 拓哉 コーチ（吉井JP）" loading="lazy" width="400" height="400"></span>池野 拓哉</li>
+          <li><span class="face"><img src="images/coach-shiraishi.jpg" alt="白石 亮太 コーチ（吉井JP）" loading="lazy" width="400" height="400"></span>白石 亮太</li>
           <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>河地 瑶</li>
-          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>大塚 翔也</li>
+          <li><span class="face"><img src="images/coach-otsuka.jpg" alt="大塚 翔也 コーチ（吉井JP）" loading="lazy" width="400" height="400"></span>大塚 翔也</li>
           <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>志村 駿介</li>
         </ul>
       </div>
