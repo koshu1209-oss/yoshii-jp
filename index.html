@@ -217,13 +217,16 @@ figcaption { font-size: .85rem; color: var(--muted); }
 .coach h3 { font-size: 1.15rem; }
 .coach .lic { display: inline-block; font-size: .75rem; font-weight: 700; border: 1px solid var(--line); border-radius: 6px; padding: 0 8px; margin-block: 4px 8px; color: var(--muted); }
 .coach p { font-size: .92rem; }
-.staff { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 18px; align-items: start; }
+.staff { display: grid; gap: 18px; }
+.leaders { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 18px; }
+.leaders .coach { align-items: center; }
 .coach-faces { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 16px 10px; }
 .coach-faces li { display: grid; justify-items: center; gap: 6px; font-weight: 700; font-size: .9rem; text-align: center; white-space: nowrap; }
 .face { display: block; width: 76px; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 3px solid var(--sun); background: var(--paper); }
 .face img { width: 100%; height: 100%; object-fit: cover; }
 .face img.ph { object-fit: contain; padding: 14%; opacity: .35; }
 .face-lg { width: 88px; }
+@media (min-width: 900px) { .coach-faces { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
 @media (max-width: 480px) { .coach-faces { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 4px; } .coach-faces li { font-size: .8rem; } .coach-faces .face { width: 64px; } }
 
 /* スケジュール */
@@ -491,6 +494,14 @@ td.day { font-weight: 900; white-space: nowrap; }
       <p>JFA公認C級・D級の資格を持つ指導者をはじめ、ゴールキーパーコーチや保護者コーチなど、子どもたちの機微をよく知るメンバーが多数そろっており、指導体制も整っています。</p>
     </div>
     <div class="staff">
+      <div class="leaders">
+      <article class="coach head">
+        <span class="face face-lg"><img src="images/logo.png" alt="" class="ph"></span>
+        <div>
+          <span class="role">代表</span>
+          <h3>吉井 和弘</h3>
+        </div>
+      </article>
       <article class="coach head">
         <!-- ▼差し替え：監督の写真 例）<img src="images/coach-yokoo.jpg" alt="横尾千明 監督"> -->
         <span class="face face-lg"><img src="images/logo.png" alt="" class="ph"></span>
@@ -500,11 +511,11 @@ td.day { font-weight: 900; white-space: nowrap; }
           <p>「サッカーを通じて人を育てる」を大切に、子どもたちの技術と心を育てています。</p>
         </div>
       </article>
+      </div>
       <div class="panel">
         <h3>コーチ</h3>
         <!-- 写真を入れるときは images/logo.png と class="ph" を、写真ファイルと alt="名前 コーチ" に差し替え -->
         <ul class="coach-faces">
-          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>吉井 和弘</li>
           <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>野中 幸雄</li>
           <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>新井 智則</li>
           <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>浦野 公昭</li>
