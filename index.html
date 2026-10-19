@@ -218,8 +218,13 @@ figcaption { font-size: .85rem; color: var(--muted); }
 .coach .lic { display: inline-block; font-size: .75rem; font-weight: 700; border: 1px solid var(--line); border-radius: 6px; padding: 0 8px; margin-block: 4px 8px; color: var(--muted); }
 .coach p { font-size: .92rem; }
 .staff { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 18px; align-items: start; }
-.coach-names { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(8.5em, 1fr)); gap: 8px; }
-.coach-names li { font-weight: 700; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+.coach-faces { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 16px 10px; }
+.coach-faces li { display: grid; justify-items: center; gap: 6px; font-weight: 700; font-size: .9rem; text-align: center; white-space: nowrap; }
+.face { display: block; width: 76px; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 3px solid var(--sun); background: var(--paper); }
+.face img { width: 100%; height: 100%; object-fit: cover; }
+.face img.ph { object-fit: contain; padding: 14%; opacity: .35; }
+.face-lg { width: 88px; }
+@media (max-width: 480px) { .coach-faces { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 4px; } .coach-faces li { font-size: .8rem; } .coach-faces .face { width: 64px; } }
 
 /* スケジュール */
 .sched-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -488,7 +493,7 @@ td.day { font-weight: 900; white-space: nowrap; }
     <div class="staff">
       <article class="coach head">
         <!-- ▼差し替え：監督の写真 例）<img src="images/coach-yokoo.jpg" alt="横尾千明 監督"> -->
-        <div class="ph-photo">写真</div>
+        <span class="face face-lg"><img src="images/logo.png" alt="" class="ph"></span>
         <div>
           <span class="role">監督</span>
           <h3>横尾 千明</h3>
@@ -497,19 +502,19 @@ td.day { font-weight: 900; white-space: nowrap; }
       </article>
       <div class="panel">
         <h3>コーチ</h3>
-        <!-- コーチを増やすときは <li>名前</li> を追加 -->
-        <ul class="coach-names">
-          <li>吉井 和弘</li>
-          <li>野中 幸雄</li>
-          <li>新井 智則</li>
-          <li>浦野 公昭</li>
-          <li>高橋 佑弥</li>
-          <li>竹林 孝</li>
-          <li>池野 拓哉</li>
-          <li>白石 亮太</li>
-          <li>河地 瑶</li>
-          <li>大塚 翔也</li>
-          <li>志村 駿介</li>
+        <!-- 写真を入れるときは images/logo.png と class="ph" を、写真ファイルと alt="名前 コーチ" に差し替え -->
+        <ul class="coach-faces">
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>吉井 和弘</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>野中 幸雄</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>新井 智則</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>浦野 公昭</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>高橋 佑弥</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>竹林 孝</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>池野 拓哉</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>白石 亮太</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>河地 瑶</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>大塚 翔也</li>
+          <li><span class="face"><img src="images/logo.png" alt="" class="ph" loading="lazy"></span>志村 駿介</li>
         </ul>
       </div>
     </div>
