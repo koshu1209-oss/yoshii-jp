@@ -754,9 +754,11 @@ td.day { font-weight: 900; white-space: nowrap; }
 // 予定を追加・変更するときはここに1行足します（日付は "年-月-日"）。
 // 試合や中止など、ふだんの練習と違う日もここに書けば、そちらが優先されます。
 var NEXT_EVENTS = [
-  { date: "2026-10-16", title: "ナイター練習", detail: "18:45〜20:45　吉井西小学校" },
-  { date: "2026-10-17", title: "練習試合・練習", detail: "4年生以下：練習試合（群馬総合運動場）\n5・6年生：練習（観音山ファミリーパーク）" },
+  { date: "2026-10-23", off: true, reason: "運動会のため" },
+  { date: "2026-10-24", off: true, reason: "運動会のため" },
+  { date: "2026-10-25", title: "練習試合・フェスティバル", detail: "4年生以上：練習試合（吉井総合グラウンド）\n3年生以下：関東学園のフェスティバルに参加" },
 ];
+// お休みの日は { date: "年-月-日", off: true, reason: "理由" } と書くと、ふだんの練習を飛ばして「お休み」と案内します
 // 登録がない日は、ふだんの練習（火・金）を表示
 var REGULAR = { days: [2, 5], title: "ナイター練習", detail: "18:45〜20:45　吉井西小学校" };
 (function () {
@@ -766,19 +768,27 @@ var REGULAR = { days: [2, 5], title: "ナイター練習", detail: "18:45〜20:4
   // 夜21時を過ぎたら、その日の活動は終わったものとして翌日以降を表示
   if (now.getHours() >= 21) today.setDate(today.getDate() + 1);
   function parse(d) { var a = d.split("-"); return new Date(+a[0], +a[1] - 1, +a[2]); }
-  var listed = NEXT_EVENTS.map(function (e) { return { d: parse(e.date), title: e.title, detail: e.detail }; })
+  var all = NEXT_EVENTS.map(function (e) { return { d: parse(e.date), title: e.title, detail: e.detail, off: e.off, reason: e.reason }; })
     .filter(function (e) { return e.d >= today; })
     .sort(function (a, b) { return a.d - b.d; });
+  var offs = all.filter(function (e) { return e.off; });
+  var listed = all.filter(function (e) { return !e.off; });
+  function isOff(d) { return offs.some(function (o) { return o.d.getTime() === d.getTime(); }); }
   var reg = null;
-  for (var i = 0; i < 14 && !reg; i++) {
+  for (var i = 0; i < 21 && !reg; i++) {
     var c = new Date(today); c.setDate(today.getDate() + i);
-    if (REGULAR.days.indexOf(c.getDay()) >= 0) reg = { d: c, title: REGULAR.title, detail: REGULAR.detail };
+    if (REGULAR.days.indexOf(c.getDay()) >= 0 && !isOff(c)) reg = { d: c, title: REGULAR.title, detail: REGULAR.detail };
   }
   var next = listed[0] && (!reg || listed[0].d <= reg.d) ? listed[0] : reg;
   if (!next) return;
+  var detail = next.detail;
+  var before = offs.filter(function (o) { return o.d < next.d; });
+  if (before.length) {
+    detail += "\n※" + before.map(function (o) { return (o.d.getMonth() + 1) + "/" + o.d.getDate() + "（" + W[o.d.getDay()] + "）"; }).join("・") + "は" + (before[0].reason || "") + "お休みです";
+  }
   document.getElementById("next-date").innerHTML = (next.d.getMonth() + 1) + "/" + next.d.getDate() + "<small>（" + W[next.d.getDay()] + "）</small>";
   document.getElementById("next-title").textContent = next.title;
-  document.getElementById("next-detail").textContent = next.detail;
+  document.getElementById("next-detail").textContent = detail;
 })();
 </script>
 </body>
