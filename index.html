@@ -283,10 +283,6 @@ td.day { font-weight: 900; white-space: nowrap; }
 
 /* 部員募集 */
 .join { background: var(--pitch-deep); color: var(--on-pitch); }
-/* 部員募集チラシを背景に薄く敷く（文字が読めるよう暗く重ねる） */
-.join { position: relative; isolation: isolate; overflow: hidden; }
-.join::before { content: ""; position: absolute; inset: 0; z-index: -1; background: url(images/join-poster.jpg) center / contain no-repeat; opacity: .22; filter: grayscale(.2); }
-.join::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22,21,21,.55), rgba(22,21,21,.2) 40%, rgba(22,21,21,.6)); }
 .join .sec-head .en { color: var(--hi); }
 .join .sec-head p { color: rgba(255,255,255,.82); }
 .join-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
