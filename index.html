@@ -163,6 +163,13 @@ p { margin: 0; }
 #next-detail { white-space: pre-line; }
 .next-body strong { font-size: 1.2rem; font-weight: 900; }
 .next-note { grid-column: 1 / -1; font-size: .8rem; color: var(--muted); }
+/* 期間限定のお知らせ */
+.promo { background: var(--paper); padding-block: 28px 8px; }
+.promo-card { background: var(--pitch-deep); color: #fff; border-radius: 16px; padding: 20px 22px 22px; display: grid; gap: 8px; }
+.promo-label { justify-self: start; background: var(--sun); color: #161515; font-weight: 900; font-size: .75rem; letter-spacing: .08em; padding: 2px 10px; border-radius: 999px; }
+.promo-card h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.4rem, 4.5vw, 2rem); margin: 0; }
+.promo-card p { margin: 0; color: rgba(255,255,255,.85); font-size: .95rem; }
+.promo-card video { width: 100%; max-width: 760px; height: auto; aspect-ratio: 16 / 9; border-radius: 10px; background: #000; margin-top: 6px; }
 @media (max-width: 560px) { .next-card { grid-template-columns: 1fr; } .next-body { border-left: 0; padding-left: 0; border-top: 3px solid var(--sun); padding-top: 8px; } }
 
 /* セクション共通 */
@@ -419,6 +426,20 @@ td.day { font-weight: 900; white-space: nowrap; }
       </div>
       <span class="next-note">雨天中止などの連絡はチームLINE等でお知らせをしております。（入団前は個別連絡しております。）下のボタンをタップすると、チームのインスタアカウントがすぐに開きます。</span>
       <span class="next-ig"><a class="ig-btn" href="https://www.instagram.com/yoshii.jp/" target="_blank" rel="noopener">Instagram @yoshii.jp を開く →</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 期間限定のお知らせ（data-until の日付を過ぎると自動で非表示） ===== -->
+<section class="promo" data-until="2026-11-30" aria-label="期間限定のお知らせ">
+  <div class="wrap">
+    <div class="promo-card">
+      <span class="promo-label">期間限定</span>
+      <h2>6年生 最後の公式戦へ</h2>
+      <p>全日本U-12サッカー選手権がスタート。みんなで6年生を応援しよう！</p>
+      <video controls playsinline preload="none" poster="images/saigo-poster.jpg" width="1280" height="720">
+        <source src="videos/saigo.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
@@ -748,6 +769,13 @@ td.day { font-weight: 900; white-space: nowrap; }
   tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.grade); }); });
   show('grade6');
 })();
+</script>
+<script>
+// 期間限定のお知らせ：data-until の日付を過ぎたら消す
+document.querySelectorAll("[data-until]").forEach(function (el) {
+  var a = el.dataset.until.split("-"), end = new Date(+a[0], +a[1] - 1, +a[2] + 1);
+  if (new Date() >= end) el.remove();
+});
 </script>
 <script>
 // ===== 次回の活動 =====
